@@ -37,16 +37,16 @@ console.log('First capicua is: ', getFirstCapicua(50,100));
 var getOdd = function(limit)
 {
     var i=0;
-    while(i<limit)
+    con:while(i<limit)
     {
         for(j=1;j<1000;j++) {
-            if (j % 2 == 0) {
+            if (j % 2 != 0) {
                 console.log(j);
                 i++;
             }
             if(i==limit)
             {
-                break;
+                continue con;
             }
 
         }
@@ -59,42 +59,16 @@ var getOdd = function(limit)
 var getEven = function(limit)
 {
     var i=0;
+    var evenNumbers = [];
     while(i<limit)
     {
-        for(j=1;j<1000;j++) {
+        for(j=0;j<limit*2;j++) {
             if (j % 2 != 0) {
-                console.log(j);
-                i++;
-            }
-            if(i==limit)
-            {
-                break;
-            }
-
-        }
-    }
-}
-
-var getOddEven = function(limit)
-{
-    var i=0;
-    while(i<limit)
-    {
-        for(j=1;j<1000;j++) {
-
-            if(i==limit)
-            {
-                break;
-            }
-            if (j % 2 != 0) {
-                console.log('Even: ',j);
-                i++;
                 continue;
             }
             if (j % 2 == 0) {
-                console.log('Odd: ',j);
+                evenNumbers.push(j);
                 i++;
-                continue;
             }
             if(i==limit)
             {
@@ -103,4 +77,39 @@ var getOddEven = function(limit)
 
         }
     }
+
+    return evenNumbers;
+};
+
+var reverseString = function(n)
+{
+    var arr = n.split('');
+    var res = [];
+    for(var i = 0;i<arr.length;i++)
+    {
+        res.push((arr[(arr.length-i)-1]));
+    }
+
+    return res;
 }
+
+var str = 'Hello'
+console.log(str,', reverse is: ',reverseString(str));
+
+var truncateParagraph = function(para,number)
+{
+    var res = '';
+    var incre = 0;
+    while(number!=0)
+    {
+        res+= para[incre];
+        --number;
+        ++incre;
+    }
+    return res;
+}
+
+
+var paragraph = 'truncate this paragraph'
+console.log('truncate this: ',paragraph,'--->',truncateParagraph(paragraph,5));
+
